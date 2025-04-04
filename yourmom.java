@@ -1,16 +1,37 @@
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
+import java.util.DuplicateFormatFlagsException;
 import java.util.Scanner;
 import java.util.Random;
 
 public class yourmom {
-
         public static void main(String[] args) {
-            System.out.println(room());
+            ArrayList<String> all_courses = new ArrayList<>();
+            ArrayList<Integer> offers = offering();
+            ArrayList<String> data = getFileData("src/text");
+            ArrayList<String> rooms = room();
+            for (int i = 0; i < data.size() - 1; i++) {
+                for (int j = 0; j < offers.get(i); j++) {
+                    all_courses.add(data.get(i));
+                }
+            }
+            System.out.println(all_courses);
+            System.out.println(offers);
+            System.out.println(all_courses.size());
+            System.out.println(rooms.size());
         }
 
-        public static void schedule(){
+        public static ArrayList<Integer> offering() {
+            ArrayList<Integer> offering = new ArrayList<>();
+            Random rand = new Random();
+            for (int i = 0; i < 93; i++) {
+                offering.add(rand.nextInt(1,5));
+            }
+            return offering;
+        }
+
+        public static void schedule(ArrayList<Integer> x){
             ArrayList<String> fileData = getFileData("src/text");
             Random rand = new Random();
             for (int i = 0; i < 10; i++) {
