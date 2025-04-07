@@ -1,31 +1,42 @@
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
-import java.util.DuplicateFormatFlagsException;
 import java.util.Scanner;
 import java.util.Random;
 
 public class yourmom {
         public static void main(String[] args) {
+            Random rand = new Random();
             ArrayList<String> all_courses = new ArrayList<>();
             ArrayList<Integer> offers = offering();
             ArrayList<String> data = getFileData("src/text");
             ArrayList<String> rooms = room();
-            for (int i = 0; i < data.size() - 1; i++) {
+
+            ArrayList<Integer> randoms = new ArrayList<>();
+            while (randoms.size() != 94) {
+                int num = rand.nextInt(1, 7201);
+                if (!randoms.contains(num)) {
+                    randoms.add(num);
+                }
+            }
+
+            for (int o = 0; o < randoms.size(); o++) {
+                String adder = rooms.get(randoms.get(o));
+                data.set(o, data.get(o) + " " + adder);
+            }
+
+            for (int i = 0; i < 94; i++) {
                 for (int j = 0; j < offers.get(i); j++) {
                     all_courses.add(data.get(i));
                 }
             }
             System.out.println(all_courses);
-            System.out.println(offers);
-            System.out.println(all_courses.size());
-            System.out.println(rooms.size());
         }
 
         public static ArrayList<Integer> offering() {
             ArrayList<Integer> offering = new ArrayList<>();
             Random rand = new Random();
-            for (int i = 0; i < 93; i++) {
+            for (int i = 0; i < 94; i++) {
                 offering.add(rand.nextInt(1,5));
             }
             return offering;
@@ -69,7 +80,7 @@ public class yourmom {
                 for (int w = 0; w < 4; w++) {
                     for (int i = 1; i <= 20; i++) {
                         for (int j = 1; j < 11; j++) {
-                            room.add(floors[k] + wing[w] + i + " " + j);
+                            room.add(floors[k] + wing[w] + i);
                         }
                     }
                 }
