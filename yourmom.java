@@ -1,8 +1,11 @@
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.Random;
+import java.util.Collections;
+import java.util.concurrent.ScheduledFuture;
 
 public class yourmom {
         public static void main(String[] args) {
@@ -11,8 +14,8 @@ public class yourmom {
             ArrayList<Integer> offers = offering();
             ArrayList<String> data = getFileData("src/text");
             ArrayList<String> rooms = room();
-
             ArrayList<Integer> randoms = new ArrayList<>();
+            Schedule(all_courses);
             while (randoms.size() != 94) {
                 int num = rand.nextInt(1, 7201);
                 if (!randoms.contains(num)) {
@@ -30,7 +33,7 @@ public class yourmom {
                     all_courses.add(data.get(i));
                 }
             }
-            System.out.println(all_courses);
+            //System.out.println(all_courses);
         }
 
         public static ArrayList<Integer> offering() {
@@ -42,14 +45,20 @@ public class yourmom {
             return offering;
         }
 
-        public static void schedule(ArrayList<Integer> x){
-            ArrayList<String> fileData = getFileData("src/text");
+        public static void Schedule(ArrayList<String> x){
             Random rand = new Random();
-            for (int i = 0; i < 10; i++) {
-                for (int j = 0; j < 10; j++) {
-                    int random = rand.nextInt(93);
-                    System.out.println(fileData.get(random));
+            for (int i = 1; i <= 10; i++) {
+                ArrayList<String> temp = new ArrayList<>();
+                while (temp.size() < 10) {
+                    System.out.println("Student " + i);
+                    int random = rand.nextInt(x.size());
+                    String course = x.get(random);
+                    int occurrences = Collections.frequency(temp, course);
+                    if (occurrences < 4) {
+                        temp.add(course);
+                    }
                 }
+                System.out.println(temp);
                 System.out.println();
             }
         }
