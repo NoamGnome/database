@@ -1,6 +1,7 @@
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.lang.reflect.Array;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.Random;
@@ -8,14 +9,14 @@ import java.util.Collections;
 import java.util.concurrent.ScheduledFuture;
 
 public class yourmom {
+    static ArrayList<String> all_courses = new ArrayList<>();
         public static void main(String[] args) {
             Random rand = new Random();
-            ArrayList<String> all_courses = new ArrayList<>();
             ArrayList<Integer> offers = offering();
             ArrayList<String> data = getFileData("src/text");
             ArrayList<String> rooms = room();
             ArrayList<Integer> randoms = new ArrayList<>();
-            Schedule(all_courses);
+            Schedule();
             while (randoms.size() != 94) {
                 int num = rand.nextInt(1, 7201);
                 if (!randoms.contains(num)) {
@@ -45,11 +46,28 @@ public class yourmom {
             return offering;
         }
 
-        public static void Schedule(ArrayList<String> x){
+        public static void Schedule(){
             ArrayList<String> sloth = Students();
+            ArrayList<String> news = new ArrayList<>();
+            ArrayList<String> stuff = new ArrayList<>();
             Random rand = new Random();
             for (int i = 0; i < sloth.size(); i++) {
+                while (stuff.size() < 10) {
+                    int random = rand.nextInt(all_courses.size());
+                    String course = all_courses.get(random);
+                    if (!sloth.get(i).contains(course) && course.contains("AP")) {
+                        stuff.add(all_courses.get(random));
+                        stuff.add(all_courses.get(random));
+                        for (int p = 0; p < 2; p++) {
+                            for (int i = 0; i < all_courses.size(); i++) {
 
+                            }
+                        }
+                    }
+                    for (int o = 0; o < )
+                    if (all_courses.get(random).contains("AP")) {
+                    }
+                }
             }
         }
 
