@@ -46,23 +46,20 @@ public class yourmom {
         }
 
         public static void Schedule(ArrayList<String> x){
+            ArrayList<String> sloth = Students();
             Random rand = new Random();
-            for (int i = 1; i <= 10; i++) {
-                ArrayList<String> temp = new ArrayList<>();
-                while (temp.size() < 10) {
-                    System.out.println("Student " + i);
-                    int random = rand.nextInt(x.size());
-                    String course = x.get(random);
-                    int occurrences = Collections.frequency(temp, course);
-                    if (occurrences < 4) {
-                        temp.add(course);
-                    }
-                }
-                System.out.println(temp);
-                System.out.println();
+            for (int i = 0; i < sloth.size(); i++) {
+
             }
         }
 
+        public static ArrayList<String> Students() {
+            ArrayList<String> students = new ArrayList<>();
+            for (int i = 1; i <= 10; i++) {
+                students.add("Student " + i);
+            }
+            return students;
+        }
         public static ArrayList<String> getFileData(String fileName) {
             ArrayList<String> list1 = new ArrayList<String>();
             try {
